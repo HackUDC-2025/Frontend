@@ -1,3 +1,8 @@
-<p>
-  camera works!
-</p>
+<ion-content class="ion-padding">
+  <ion-button expand="full" (click)="takePhoto()">📸 Tomar Foto</ion-button>
+
+  <div *ngIf="imageUrl">
+    <h3>Foto Capturada:</h3>
+    <img [src]="imageUrl" alt="Foto tomada" />
+  </div>
+</ion-content>
