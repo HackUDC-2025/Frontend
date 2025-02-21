@@ -14,23 +14,25 @@
   </ion-header>
 
   <!-- Contenedor de los botones -->
-  <div class="w-full max-w-md p-6 space-y-4">
+  <div class="w-full max-w-md p-6 space-y-4 ">
     
-    <h2 class="text-center text-granate-renacentista text-2xl font-bold">¿Qué quieres hacer hoy?</h2>
+    <h2 class="text-center text-white text-2xl font-bold">Selecciona tu edad</h2>
 
-    <!-- Botón 1: Explorar Museo -->
-    <button class="w-full bg-oro-clasico hover:bg-granate-renacentista text-white font-bold py-3 px-4 rounded-lg transition text-lg">
-      🏛️ Explorar Museo
+    <!-- Botón 1: Niños -->
+    <button 
+      (click) = "goToCamera()"
+      class="w-full bg-oro-clasico hover:bg-oro-clasico-hover text-white font-bold py-3 px-4 rounded-lg transition text-lg">
+      Niños
     </button>
 
-    <!-- Botón 2: Escanear Obra de Arte -->
+    <!-- Botón 2: Adolescentes -->
     <button class="w-full bg-azul-patrimonio hover:bg-gray-800 text-marmol-beige font-bold py-3 px-4 rounded-lg transition text-lg">
-      📸 Escanear Obra de Arte
+      Adolescentes
     </button>
 
-    <!-- Botón 3: Mi Galería -->
+    <!-- Botón 3: Jubilados -->
     <button class="w-full bg-gris-pizarra hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition text-lg">
-      🎨 Mi Galería
+      Jubilados
     </button>
 
   </div>
