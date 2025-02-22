@@ -1,43 +1,35 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { photoDto } from '../dtos/photo.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
   private storageKey = 'photoHistory';
-  private photosSubject = new BehaviorSubject<string[]>(this.loadPhotos()); // 🔥 RxJS Store
+  private photosSubject = new BehaviorSubject<photoDto[]>(this.loadPhotos()); 
 
-  photos$ = this.photosSubject.asObservable(); // Expose as Observable
+  photos$ = this.photosSubject.asObservable(); 
 
   constructor() {}
 
-  // 🔹 Convert file to Base64 & store in localStorage
-  async addPhoto(file: string) {
+  async addPhoto(title: string,description: string) {
     const photos = this.loadPhotos();
-    photos.push(file);
+    const item = {
+      title,
+      description
+    }
+    photos.push(item);
     localStorage.setItem(this.storageKey, JSON.stringify(photos));
-    this.photosSubject.next(photos); // 🔥 Notify subscribers
+    this.photosSubject.next(photos); 
   }
 
-  // 🔹 Load photos from localStorage
-  private loadPhotos(): string[] {
+  private loadPhotos(): photoDto[] {
     return JSON.parse(localStorage.getItem(this.storageKey) || '[]');
   }
 
-  // 🔹 Convert File to Base64
-  private convertToBase64(file: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
-    });
-  }
-
-  // 🔹 Clear all stored photos
   clearPhotos() {
     localStorage.removeItem(this.storageKey);
-    this.photosSubject.next([]); // 🔥 Notify subscribers
+    this.photosSubject.next([]);
   }
 }

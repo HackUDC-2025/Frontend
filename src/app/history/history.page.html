@@ -1,9 +1,10 @@
 <div class="w-full max-w-md bg-museo-beige dark:bg-museo-gris p-4 rounded-lg shadow-lg">
-  <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-2">📸 Photo History</h2>
+  <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-2">Historico de descripciones</h2>
 
   <div *ngIf="photos.length > 0; else noPhotos">
     <div *ngFor="let photo of photos" class="mb-4">
-      <img [src]="photo" class="w-full rounded-lg shadow-md" />
+      <h3 class="text-md font-bold text-museo-negro dark:text-museo-blanco mt-2">{{ photo.title }}</h3>
+      <p class="text-gray-700 dark:text-gray-300">{{ photo.description }}</p>
     </div>
   </div>
 

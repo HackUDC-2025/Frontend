@@ -40,7 +40,6 @@ export class OpenCameraPage {
   onImageCaptured(imageBase64: string) {
     this.capturedImage = `data:image/jpeg;base64,${imageBase64}`; 
     this.photoTaken = true;
-    this.photoService.addPhoto(this.capturedImage);
     this.showAudioPlayer = false;
     this.sendImageToServer(imageBase64);
   }
@@ -88,6 +87,7 @@ export class OpenCameraPage {
             year: data.description?.año || 'Año desconocido',
             description: data.description?.descripcion || 'Descripción no disponible'
           };
+          this.photoService.addPhoto(this.responseData.title,this.responseData.description);
 
           this.recievedData = true;
 
