@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>typography</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-6">
+  
+  <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-6">
+    🔤 Tipografías Usadas en el Sistema
+  </h1>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">typography</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="w-full max-w-md space-y-4">
+    
+    <div *ngFor="let font of fonts" class="border-2 border-museo-oro p-4 rounded-lg shadow-md">
+      
+      <h2 class="text-xl text-museo-negro dark:text-museo-blanco font-bold">
+        {{ font.name }}
+      </h2>
+
+      <p [ngClass]="font.class" class="text-lg text-museo-gris dark:text-gray-300 mt-2">
+        "El arte es la expresión más pura del alma humana."
+      </p>
+      
+    </div>
+
+  </div>
+  
 </ion-content>

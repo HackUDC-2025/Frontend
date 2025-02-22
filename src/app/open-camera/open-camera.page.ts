@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { ProfileService } from '../store/profile/profile.service';
 import { CameraComponent } from '../components/camera/camera.component';
 import { ArtCardComponent } from '../components/art-card/art-card.component';
-import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { IonicModule } from '@ionic/angular';
 import { HttpService } from '../services/http.service';
 import { SearchImageResponseDto } from '../dtos/search-image.dto';
@@ -22,13 +21,11 @@ import { TitleParserDto } from '../dtos/title-parse.dto';
 })
 export class OpenCameraPage {
 
-  profile$: Observable<string | null>;
   responseData: TitleParserDto | null = null;
   capturedImage: string | null = null;
 
   constructor(private profileService: ProfileService, private httpService: HttpService) {
-    this.profile$ = this.profileService.getProfile();
-    console.log(this.profile$)
+    
   }
 
   async speak() {
@@ -69,27 +66,31 @@ export class OpenCameraPage {
   
   
   sendImageToServer(imageBase64: string) {
-    this.httpService.searchImage(imageBase64).subscribe({
-      next: (data: SearchImageResponseDto) => {
-        console.log("✅ Respuesta del servidor:", JSON.stringify(data, null, 2));
-  
-        this.responseData = { 
-          title: data.description?.title || 'Título desconocido',
-          authors: data.description?.author || 'Autor desconocido',
-          year: data.description?.year || 'Año desconocido',
-          description: data.description?.description || 'Descripción no disponible'
-        };
-        const description = "Esta es una descripción generada automáticamente.";
+    
+    this.profileService.getProfile().subscribe(profileData =>{
 
-        this.playAudio(this.responseData.description);
-      },
-      error: (err) => {
-        console.error("❌ Error en la petición:", err.message);
-      },
-      complete: () => {
-        console.log("✔ Petición completada.");
-      }
-    });
+      this.httpService.searchImage(imageBase64, profileData).subscribe({
+        next: (data: SearchImageResponseDto) => {
+          console.log("✅ Respuesta del servidor:", JSON.stringify(data, null, 2));
+    
+          this.responseData = { 
+            title: data.description?.title || 'Título desconocido',
+            authors: data.description?.author || 'Autor desconocido',
+            year: data.description?.year || 'Año desconocido',
+            description: data.description?.description || 'Descripción no disponible'
+          };
+          const description = "Esta es una descripción generada automáticamente.";
+
+          this.playAudio(this.responseData.description);
+        },
+        error: (err) => {
+          console.error("❌ Error en la petición:", err.message);
+        },
+        complete: () => {
+          console.log("✔ Petición completada.");
+        }
+      });
+    })
   }
   
 }
