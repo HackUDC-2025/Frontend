@@ -16,24 +16,15 @@ export class HttpService {
 
   searchImage(imageBase64: string, profile: ProfileConfig): Observable<any> {
     const url = `${this.baseUrl}/search`;
-    const formData = new FormData();
-  
-    const byteCharacters = atob(imageBase64.split(',')[1]);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const imageBlob = new Blob([byteArray], { type: "image/jpeg" });
-  
-    formData.append("file", imageBlob, "photo.jpg");
-    formData.append("profile", JSON.stringify(profile));
-  
-    return this.http.post<SearchImageResponseDto>(url, formData).pipe(
+    const requestBody = { image_base64: imageBase64,
+      profile: profile
+     };
+
+    
+    return this.http.post<SearchImageResponseDto>(url, requestBody).pipe(
       catchError(this.handleError)
     );
   }
-  
 
   generateAudio(description: string): Observable<any> {
     const url = `${this.baseUrl}/text-to-speech`;
