@@ -15,7 +15,8 @@ export class ArtCardComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['description'] && changes['description'].currentValue) {
-      console.log("📌 Datos actualizados en el hijo:", this.description);
+      console.log("📌 Datos actualizados en el hijo:", this.description?.wikilink);
+      console.log(this.description?.wikilink && this.description.wikilink.trim() !== '')
     }
   }
 }

@@ -6,5 +6,8 @@ export interface SearchImageResponseDto {
       año: string;
       descripcion: string;
     }
+    wikipedia_url: string;
+    prado_url: string;
+
   }
   

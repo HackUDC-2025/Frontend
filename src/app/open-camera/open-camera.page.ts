@@ -85,7 +85,9 @@ export class OpenCameraPage {
             title: data.description?.titulo || 'Título desconocido',
             authors: data.description?.autor || 'Autor desconocido',
             year: data.description?.año || 'Año desconocido',
-            description: data.description?.descripcion || 'Descripción no disponible'
+            description: data.description?.descripcion || 'Descripción no disponible',
+            wikilink: data.wikipedia_url || '',
+            pradolink: data.prado_url || ''
           };
           this.photoService.addPhoto(this.responseData.title,this.responseData.description);
 

@@ -18,9 +18,21 @@
   <p class="text-museo-gris dark:text-gray-300 mt-3">
     {{ description?.description || 'Descripción no disponible' }}
   </p>
-  <a href="" target="_blank" rel="noopener noreferrer">
-    <img src="/assets/icon/wikipedia.svg" alt="Wikipedia" >
-  </a>
+  <span *ngIf="description?.wikilink && description.wikilink.trim() !== ''">
+    <a [href]="description.wikilink" target="_blank" rel="noopener noreferrer">
+      <img src="/assets/icon/wikipedia.svg" alt="Wikipedia">
+    </a>
+  </span>
+
+  <span *ngIf="description?.pradolink && description.pradolink.trim() !== ''">
+    <a [href]="description.pradolink" target="_blank" rel="noopener noreferrer">
+      <img src="/assets/icon/prado.svg" alt="Museo del Prado">
+    </a>
+  </span>
+  
+
+
+  
   </div>
   <ng-template #nodata>
     <div class="flex justify-center">
