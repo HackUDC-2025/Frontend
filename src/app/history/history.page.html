@@ -1,16 +1,44 @@
-<div class="w-full max-w-md bg-museo-beige dark:bg-museo-gris p-4 rounded-lg shadow-lg">
-  <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-2">Historico de descripciones</h2>
-
-  <div *ngIf="photos.length > 0; else noPhotos">
-    <div *ngFor="let photo of photos" class="mb-4">
-      <h3 class="text-md font-bold text-museo-negro dark:text-museo-blanco mt-2">{{ photo.title }}</h3>
-      <p class="text-gray-700 dark:text-gray-300">{{ photo.description }}</p>
+<ion-content [fullscreen]="true" 
+  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex px-6 space-y-8 ">
+  <div class="w-full max-w-md  p-4 rounded-lg shadow-lg">
+    
+ 
+    <div class="relative w-full flex flex-col items-center mb-3">
+      <h2 class="text-xl font-semibold text-museo-negro dark:text-museo-blanco mb-4 text-center items-center">
+        📜 Histórico de Descripciones
+      </h2>
+      <div class="bar-title"></div>
     </div>
+    
+    <div *ngIf="photos.length > 0; else noPhotos">
+      <ul class="space-y-3">
+        <li *ngFor="let photo of photos" class="bg-museo-beige dark:bg-museo-gris p-4 rounded-lg shadow-md">
+          
+          <h3 class="text-md font-bold text-museo-negro dark:text-museo-blanco">
+            {{ photo.title }} 
+          </h3>
+          
+          <p class="text-gray-700 dark:text-gray-300 mt-1">
+            {{ photo.description }}
+          </p>
+  
+        </li>
+      </ul>
+    </div>
+  
+    
+    <ng-template #noPhotos>
+      <p class="text-gray-500 dark:text-gray-400 text-center mt-4">🔍 No hay elementos en el historial.</p>
+    </ng-template>
+  
+    
+    <button (click)="clearHistory()" 
+      class="w-full mt-4 bg-museo-oro text-museo-negro dark:text-museo-blanco px-4 py-2 rounded-lg 
+             hover:scale-105 hover:shadow-lg active:scale-95 transition-all">
+      🗑 Limpiar Historial
+    </button>
+  
   </div>
+  
 
-  <ng-template #noPhotos>
-    <p class="text-gray-500 dark:text-gray-400 text-center">No photos yet.</p>
-  </ng-template>
-
-  <button ion-button (click)="clearHistory()">Clear Photos</button>
-</div>
+</ion-content>
