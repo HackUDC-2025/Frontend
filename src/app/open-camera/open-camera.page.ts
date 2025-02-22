@@ -27,7 +27,7 @@ export class OpenCameraPage {
   capturedImage: string | null = null;
   photoTaken: boolean = false;
   showAudioPlayer: boolean = false;
-  historySrc: string = 'assets/icon/button-history-w.svg';
+  historySrc: string = 'assets/icon/button-history.svg';
 
 
   @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;

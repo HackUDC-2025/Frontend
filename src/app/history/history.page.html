@@ -1,7 +1,14 @@
 <ion-content [fullscreen]="true" 
-  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex px-6 space-y-8 ">
-  <div class="w-full max-w-md  p-4 rounded-lg shadow-lg">
-    
+  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex px-6 ">
+  <div class="w-full max-w-md h-full p-4 rounded-lg shadow-lg">
+    <div class="flex justify-between mb-4">
+      <app-back-button></app-back-button>
+      <button (click)="clearHistory()" 
+          class="flex items-center space-x-2 transition-all">
+        <span class="w-10 h-10 text-3xl">🗑</span>
+      </button>
+
+    </div>
  
     <div class="relative w-full flex flex-col items-center mb-3">
       <h2 class="text-xl font-semibold text-museo-negro dark:text-museo-blanco mb-4 text-center items-center">
@@ -32,11 +39,7 @@
     </ng-template>
   
     
-    <button (click)="clearHistory()" 
-      class="w-full mt-4 bg-museo-oro text-museo-negro dark:text-museo-blanco px-4 py-2 rounded-lg 
-             hover:scale-105 hover:shadow-lg active:scale-95 transition-all">
-      🗑 Limpiar Historial
-    </button>
+    
   
   </div>
   

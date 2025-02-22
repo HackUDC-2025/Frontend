@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { PhotoService } from '../services/photo.service';
 import { photoDto } from '../dtos/photo.dto';
+import { BackButtonComponent } from '../components/back-button/back-button.component';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, BackButtonComponent]
 })
 export class HistoryPage implements OnInit {
   photos: photoDto[] = [];

@@ -19,14 +19,21 @@
     {{ description?.description || 'Descripción no disponible' }}
   </p>
   <span *ngIf="description?.wikilink && description.wikilink.trim() !== ''">
-    <a [href]="description.wikilink" target="_blank" rel="noopener noreferrer">
-      <img src="/assets/icon/wikipedia.svg" alt="Wikipedia">
+    <a [href]="description.wikilink" target="_blank" rel="noopener noreferrer"
+    class="bg-white text-museo-negro dark:text-museo-blanco p-4 rounded-full 
+            hover:scale-105 hover:shadow-lg active:scale-95 transition-all
+            flex items-center space-x-2 border-2 border-museo-oro border-solid">
+      <img src="/assets/icon/wikipedia.svg" alt="Wikipedia" class="w-8 h-8 transition-all">
     </a>
   </span>
 
   <span *ngIf="description?.pradolink && description.pradolink.trim() !== ''">
-    <a [href]="description.pradolink" target="_blank" rel="noopener noreferrer">
-      <img src="/assets/icon/prado.svg" alt="Museo del Prado">
+    <a [href]="description.pradolink" target="_blank" rel="noopener noreferrer"
+    class="bg-white text-museo-negro dark:text-museo-blanco p-4 rounded-full 
+            hover:scale-105 hover:shadow-lg active:scale-95 transition-all
+            flex items-center space-x-2 border-2 border-museo-oro border-solid"
+    >
+      <img src="/assets/icon/prado.svg" alt="Museo del Prado" class="w-8 h-8 transition-all">
     </a>
   </span>
   

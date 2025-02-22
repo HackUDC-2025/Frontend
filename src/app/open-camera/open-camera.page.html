@@ -12,8 +12,8 @@
     </button>
   </div>
   <div class="relative w-full flex flex-col items-center">
-    <h1 class="text-3xl font-extrabold text-museo-negro dark:text-museo-blanco text-center mt-2 tracking-wide">
-      Escanea tu obras de arte
+    <h1 class="text-3xl font-extrabold text-museo-negro dark:text-museo-blanco text-center  tracking-wide">
+      Escanea tus obras de arte
     </h1>
     <div class="bar-title"></div>
   </div>
@@ -21,11 +21,11 @@
 
   
   <div *ngIf="!photoTaken" class="mx-3 bg-museo-beige dark:bg-museo-gris p-6 rounded-lg shadow-lg flex-grow">
-    <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-4">Instrucciones:</h2>
-    <ol class="list-decimal list-inside space-y-2 text-museo-gris dark:text-gray-300">
-      <li>Pulsa el botón para activar la cámara.</li>
-      <li>Toma una foto de la obra de arte.</li>
-      <li>El sistema analizará la imagen y te mostrará la información.</li>
+    <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-4">¿Cómo escanear tu obra de arte?:</h2>
+    <ol class="list-decimal list-inside space-y-2 text-museo-gris dark:text-gray-300 text-sm">
+      <li>Haz clic en el botón para activar la cámara.</li>
+      <li>Enfoca y captura una foto nitida de la obra.</li>
+      <li>Espera mientras analizamos la imagen y te mostraremos los detalles.</li>
     </ol>
   </div>
 
@@ -39,11 +39,11 @@
       <span class="block w-20 h-1 bg-museo-oro dark:bg-museo-terracota mt-2 mx-auto rounded-full"></span>
     </h3>
   
-    <button *ngIf="!showAudioPlayer" (click)="playAudio(responseData?.description || 'Hola')" 
-    class="bg-museo-oro text-museo-negro dark:text-museo-blanco p-4 rounded-full 
-          hover:scale-105 hover:shadow-lg active:scale-95 transition-all
-          mt-6 mb-6 flex items-center space-x-2">
-    <img src="/assets/icon/headphones.svg" alt="headphones" class="w-8 h-8 transition-all">
+    <button *ngIf="!showAudioPlayer" (click)="playAudio(responseData?.description || '')" 
+      class="bg-museo-oro text-museo-negro dark:text-museo-blanco p-4 rounded-full 
+            hover:scale-105 hover:shadow-lg active:scale-95 transition-all
+            mt-6 mb-6 flex items-center space-x-2">
+      <img src="/assets/icon/headphones.svg" alt="headphones" class="w-8 h-8 transition-all">
     </button>
 
     <div *ngIf="showAudioPlayer" class="w-full max-w-md flex flex-col items-center my-4 space-y-4">
