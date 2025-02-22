@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { documentationRoutes } from './documentation/documentation.routes';
 
 export const routes: Routes = [
   {
@@ -14,4 +15,9 @@ export const routes: Routes = [
     path: 'open-camera',
     loadComponent: () => import('./open-camera/open-camera.page').then( m => m.OpenCameraPage)
   },
+  {
+    path: 'documentation',
+    loadChildren: () => import('./documentation/documentation.module')
+      .then((m) => m.DocumentationModule),
+  }
 ];

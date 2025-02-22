@@ -28,4 +28,9 @@ export class HomePage {
   toggleCustomProfile(){
     this.showCustomProfile = !this.showCustomProfile;
   }
+
+  goToDocumentation() {
+    this.router.navigate(['/documentation']);
+  }
+
 }

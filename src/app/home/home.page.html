@@ -4,7 +4,13 @@
 
   <!-- Encabezado -->
   <div class="w-full flex flex-col items-center space-y-4 mt-8">
-    <img src="assets/icon/favicon.png" alt="Logo" class="w-24 h-24 shadow-lg rounded-full">
+    
+    <img 
+      src="assets/icon/logo-blanco.svg" 
+      alt="Logo" 
+      class="w-24 h-24 shadow-lg"
+      (click)="goToDocumentation()"
+    >
     <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center">Explora el Arte</h1>
     <p class="text-lg text-museo-gris dark:text-gray-400 max-w-md text-center">
       Elige tu perfil y descubre información adaptada para ti.
