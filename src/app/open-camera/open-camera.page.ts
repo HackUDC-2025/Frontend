@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { Observable } from 'rxjs';
 import { ProfileService } from '../store/profile/profile.service';
 import { CameraComponent } from '../components/camera/camera.component';
 import { ArtCardComponent } from '../components/art-card/art-card.component';
@@ -23,6 +21,7 @@ export class OpenCameraPage {
 
   responseData: TitleParserDto | null = null;
   capturedImage: string | null = null;
+  photoTaken: boolean = false;
 
   constructor(private profileService: ProfileService, private httpService: HttpService) {
     
@@ -34,7 +33,7 @@ export class OpenCameraPage {
 
   onImageCaptured(imageBase64: string) {
     this.capturedImage = `data:image/jpeg;base64,${imageBase64}`; 
-
+    this.photoTaken = true;
     this.sendImageToServer(imageBase64);
   }
 

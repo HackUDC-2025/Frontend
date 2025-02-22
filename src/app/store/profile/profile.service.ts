@@ -15,9 +15,7 @@ export class ProfileService {
       map(profile => profile ?? "default") 
     );
   }
-  async getProfileString(): Promise<string> {
-    return await firstValueFrom(this.getProfile());
-  }
+
 
   setProfile(status: string): void {
     this.store.dispatch(setProfileStatus({ profileStatus: status }));

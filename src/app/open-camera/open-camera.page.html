@@ -1,11 +1,12 @@
+<ion-content [fullscreen]="true" 
+  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8 h-full">
 
-<ion-content [fullscreen]="true" class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8">
-  
-  <h1 class="text-2xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-6">
+  <h1 class="text-2xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-10">
     📸 Escaneo de Obra de Arte
   </h1>
 
-  <div class="mx-3 bg-museo-beige dark:bg-museo-gris p-6 rounded-lg shadow-lg">
+  
+  <div *ngIf="!photoTaken" class="mx-3 bg-museo-beige dark:bg-museo-gris p-6 rounded-lg shadow-lg flex-grow">
     <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-4">Instrucciones:</h2>
     <ol class="list-decimal list-inside space-y-2 text-museo-gris dark:text-gray-300">
       <li>Pulsa el botón para activar la cámara.</li>
@@ -14,15 +15,19 @@
     </ol>
   </div>
 
-  <div class="w-full max-w-md flex flex-col items-center">
-    <app-camera class="w-full"
-    (imageCaptured) = "onImageCaptured($event)"
-    ></app-camera>
+  <div class="w-full max-w-md flex flex-col flex-grow">
+    <app-camera class="w-full" (imageCaptured)="onImageCaptured($event)"></app-camera>
   </div>
-  <div class="w-full max-w-md flex flex-col items-center">
-    <app-art-card [description] = "responseData"></app-art-card>
-  </div>
-  <audio id="audioPlayer" controls></audio>
 
+  <div *ngIf="photoTaken" class="w-full max-w-md flex flex-col items-center flex-grow">
+    <div class="w-full max-w-md flex justify-center my-4">
+      <audio id="audioPlayer" controls autoplay="false"
+        class="w-5/6 rounded-lg shadow-lg bg-museo-beige dark:bg-museo-gris ">
+      </audio>
+    </div>
+    <app-art-card [description]="responseData"></app-art-card>
+    
+    
+  </div>
 
 </ion-content>
