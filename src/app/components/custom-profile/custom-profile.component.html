@@ -1,0 +1,32 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="m-2 bg-museo-beige dark:bg-museo-gris p-8 rounded-xl shadow-2xl max-w-md w-full h-3/5 flex flex-col justify-between relative animate-fade-in animate-slide-up">
+    
+    <div
+      class="flex flex-row-reverse"
+    >
+      <button (click)="closeModal()" 
+        class=" text-museo-negro dark:text-museo-blanco text-5xl font-bold 
+              hover:scale-125 hover:text-museo-oro transition-all duration-300">
+        ✖
+      </button>
+
+    </div>
+
+    <h2 class="mt-6 text-museo-negro dark:text-museo-blanco text-2xl  text-center">Perfil Personalizado</h2>
+
+    <form (submit)="saveProfile()" class="space-y-4 flex flex-col justify-center flex-grow">
+      <label class="block text-museo-negro dark:text-museo-blanco text-lg font-semibold">
+        Describe a la persona:
+      </label>
+      <textarea [(ngModel)]="description" name="description" 
+        class="w-full h-32 p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-museo-oro focus:border-museo-oro transition resize-none"
+        placeholder="Escribe aquí..." required></textarea>
+    </form>
+
+    <button type="submit"
+      class="w-full bg-museo-oro hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-lg shadow-md transition-all duration-300">
+      Guardar
+    </button>
+
+  </div>
+</div>

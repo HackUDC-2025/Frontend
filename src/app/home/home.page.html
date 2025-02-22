@@ -1,5 +1,6 @@
 <ion-content [fullscreen]="true" 
-  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8 custom-bg-dark">
+  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8"
+  >
 
   <!-- Encabezado -->
   <div class="w-full flex flex-col items-center space-y-4 mt-8">
@@ -46,6 +47,14 @@
       <span>📚</span>
       <span>Investigador</span>
     </button>
+
+    <button 
+      (click)="toggleCustomProfile()"
+      class="w-full bg-museo-oro hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300">
+      Perfil Personalizado
+    </button>
+
+    <app-custom-profile *ngIf="showCustomProfile" (close)="toggleCustomProfile()"></app-custom-profile>
   </div>
 
 </ion-content>

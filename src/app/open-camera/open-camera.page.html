@@ -1,21 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>open-camera</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true"
-  class="ion-padding flex flex-col items-center justify-center bg-marmol-beige"
->
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">open-camera</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8">
+  
+  <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-6">
+    📸 Escaneo de Obra de Arte
+  </h1>
 
-  <div class="container">
-    
-    <app-camera></app-camera>
-
+  <div class="p-2 bg-museo-beige dark:bg-museo-gris p-6 rounded-lg shadow-lg max-w-md w-full">
+    <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-4">Instrucciones:</h2>
+    <ol class="list-decimal list-inside space-y-2 text-museo-gris dark:text-gray-300">
+      <li>Pulsa el botón para activar la cámara.</li>
+      <li>Toma una foto de la obra de arte.</li>
+      <li>El sistema analizará la imagen y te mostrará la información.</li>
+    </ol>
   </div>
+
+  <div class="w-full max-w-md flex flex-col items-center">
+    <app-camera></app-camera>
+  </div>
+
 </ion-content>
