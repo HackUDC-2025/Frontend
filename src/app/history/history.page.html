@@ -1,0 +1,15 @@
+<div class="w-full max-w-md bg-museo-beige dark:bg-museo-gris p-4 rounded-lg shadow-lg">
+  <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-2">📸 Photo History</h2>
+
+  <div *ngIf="photos.length > 0; else noPhotos">
+    <div *ngFor="let photo of photos" class="mb-4">
+      <img [src]="photo" class="w-full rounded-lg shadow-md" />
+    </div>
+  </div>
+
+  <ng-template #noPhotos>
+    <p class="text-gray-500 dark:text-gray-400 text-center">No photos yet.</p>
+  </ng-template>
+
+  <button ion-button (click)="clearHistory()">Clear Photos</button>
+</div>

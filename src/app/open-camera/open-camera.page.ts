@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { HttpService } from '../services/http.service';
 import { SearchImageResponseDto } from '../dtos/search-image.dto';
 import { TitleParserDto } from '../dtos/title-parse.dto';
+import { PhotoService } from '../services/photo.service';
 
 
 @Component({
@@ -19,13 +20,14 @@ import { TitleParserDto } from '../dtos/title-parse.dto';
 })
 export class OpenCameraPage {
 
+  photos: string[] = [];
   responseData: TitleParserDto | null = null;
   recievedData: boolean = false;
   capturedImage: string | null = null;
   photoTaken: boolean = false;
 
-  constructor(private profileService: ProfileService, private httpService: HttpService) {
-    
+  constructor(private profileService: ProfileService, private httpService: HttpService, private photoService: PhotoService) { 
+
   }
 
   async speak() {
@@ -35,6 +37,7 @@ export class OpenCameraPage {
   onImageCaptured(imageBase64: string) {
     this.capturedImage = `data:image/jpeg;base64,${imageBase64}`; 
     this.photoTaken = true;
+    this.photoService.addPhoto(this.capturedImage);
     this.sendImageToServer(imageBase64);
   }
 
