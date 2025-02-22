@@ -6,11 +6,12 @@
   <div class="w-full flex flex-col items-center space-y-4 mt-8">
     
     <img 
-      src="assets/icon/logo-blanco.svg" 
+      [src]="logoSrc" 
       alt="Logo" 
-      class="w-24 h-24 shadow-lg"
+      class="w-24 h-24 transition-all"
       (click)="goToDocumentation()"
     >
+
     <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center">Explora el Arte</h1>
     <p class="text-lg text-museo-gris dark:text-gray-400 max-w-md text-center">
       Elige tu perfil y descubre información adaptada para ti.
@@ -56,9 +57,13 @@
 
     <button 
       (click)="toggleCustomProfile()"
-      class="w-full bg-museo-oro hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300">
+      class="w-full border-2 font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300
+            border-solid
+            border-museo-oro text-museo-oro dark:text-museo-blanco
+            bg-transparent hover:bg-museo-oro dark:hover:bg-museo-oro dark:focus:bg-museo-oro">
       Perfil Personalizado
     </button>
+
 
     <app-custom-profile *ngIf="showCustomProfile" (close)="toggleCustomProfile()"></app-custom-profile>
   </div>

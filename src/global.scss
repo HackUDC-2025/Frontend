@@ -46,3 +46,10 @@
     transition-all duration-300 transform hover:shadow-2xl active:shadow-none active:translate-y-1;
   }
   
+  html, body {
+    @apply font-body;
+  }
+  h1, h2, h3 {
+    @apply font-heading;
+  }
+    

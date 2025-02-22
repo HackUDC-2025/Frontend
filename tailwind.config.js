@@ -3,6 +3,10 @@ module.exports = {
   content: ['./src/**/*.{html,ts, scss}'],
   theme: {
     extend: {
+      fontFamily: {
+        body: ['Inter Tight', 'sans-serif'], 
+        heading: ['Playfair Display', 'serif'],
+      },
       colors: {
 
         'museo-negro': '#1C1C1C',       

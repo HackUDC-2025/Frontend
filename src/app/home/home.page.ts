@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
 import { CameraComponent } from '../components/camera/camera.component';
 import { Router } from '@angular/router';
@@ -17,7 +17,12 @@ import { CommonModule } from '@angular/common';
 export class HomePage {
   showCustomProfile: boolean= false;
 
-  constructor( private router: Router, private profileService: ProfileService) {}
+  logoSrc: string = 'assets/icon/logo.svg';
+
+  constructor( private router: Router, private profileService: ProfileService) {
+
+    this.updateLogo();
+  }
 
   goToCamera(profiles: string) {
     const valor = profiles;
@@ -31,6 +36,14 @@ export class HomePage {
 
   goToDocumentation() {
     this.router.navigate(['/documentation']);
+  }
+
+  @HostListener('window:DOMContentLoaded') 
+  @HostListener('window:storage') 
+  @HostListener('window:change') 
+  updateLogo() {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    this.logoSrc = isDarkMode ? 'assets/icon/logo-blanco.svg' : 'assets/icon/logo.svg';
   }
 
 }

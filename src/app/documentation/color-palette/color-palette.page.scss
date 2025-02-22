@@ -1,0 +1,16 @@
+p {
+    font-size: 14px;
+  }
+  
+  .dark p {
+    color: #f0f0f0;
+  }
+  
+  .grid div {
+    transition: transform 0.2s;
+  }
+  
+  .grid div:hover {
+    transform: scale(1.1);
+  }
+  
