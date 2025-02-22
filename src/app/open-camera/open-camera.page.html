@@ -1,9 +1,13 @@
 <ion-content [fullscreen]="true" 
   class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8 h-full">
 
-  <h1 class="text-2xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-10">
-    📸 Escaneo de Obra de Arte
-  </h1>
+  <div class="relative w-full flex flex-col items-center">
+    <h1 class="text-3xl font-extrabold text-museo-negro dark:text-museo-blanco text-center mt-10 tracking-wide">
+      📸 Escaneo de Obra de Arte
+    </h1>
+    <div class="bar-title"></div>
+  </div>
+  
 
   
   <div *ngIf="!photoTaken" class="mx-3 bg-museo-beige dark:bg-museo-gris p-6 rounded-lg shadow-lg flex-grow">
@@ -20,15 +24,33 @@
   </div>
 
   <div *ngIf="photoTaken" class="w-full max-w-md flex flex-col items-center flex-grow">
-    <div class="w-full max-w-md flex justify-center my-4">
-      <audio id="audioPlayer" controls autoplay="false"
-        class="w-5/6 rounded-lg shadow-lg bg-museo-beige dark:bg-museo-gris ">
-      </audio>
+    <h3 class="text-xl font-semibold text-museo-negro dark:text-museo-blanco text-center uppercase tracking-wide relative mt-6">
+      Información
+      <span class="block w-20 h-1 bg-museo-oro dark:bg-museo-terracota mt-2 mx-auto rounded-full"></span>
+    </h3>
+  
+    <button *ngIf="!showAudioPlayer" (click)="playAudio(responseData?.description || 'Hola')" 
+    class="bg-museo-oro text-museo-negro dark:text-museo-blanco p-4 rounded-full 
+          hover:scale-105 hover:shadow-lg active:scale-95 transition-all
+          mt-6 mb-6 ml-4 flex items-center space-x-2">
+    <img src="/assets/icon/headphones.svg" alt="headphones" class="w-8 h-8 transition-all">
+    </button>
+
+    <div *ngIf="showAudioPlayer" class="w-full max-w-md flex flex-col items-center my-4 space-y-4">
+
+
+    <audio #audioPlayer controls 
+      id="audioPlayer"
+      class="w-5/6 rounded-lg shadow-lg bg-museo-beige dark:bg-museo-gris">
+    </audio>
+
+
     </div>
+
+  
     <app-art-card [description]="responseData"></app-art-card>
-    
-    
   </div>
+  
 
 
 
