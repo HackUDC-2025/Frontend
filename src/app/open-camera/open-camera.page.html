@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" 
-  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8 h-full">
+  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex px-6 space-y-8 ">
 
   <div class="flex justify-end">
     <button
@@ -33,7 +33,7 @@
     <app-camera class="w-full" (imageCaptured)="onImageCaptured($event)"></app-camera>
   </div>
 
-  <div *ngIf="photoTaken" class="w-full max-w-md flex flex-col items-center flex-grow">
+  <div *ngIf="photoTaken" class="w-full max-w-md flex flex-col items-center">
     <h3 class="text-xl font-semibold text-museo-negro dark:text-museo-blanco text-center uppercase tracking-wide relative mt-6">
       Información
       <span class="block w-20 h-1 bg-museo-oro dark:bg-museo-terracota mt-2 mx-auto rounded-full"></span>
@@ -42,7 +42,7 @@
     <button *ngIf="!showAudioPlayer" (click)="playAudio(responseData?.description || 'Hola')" 
     class="bg-museo-oro text-museo-negro dark:text-museo-blanco p-4 rounded-full 
           hover:scale-105 hover:shadow-lg active:scale-95 transition-all
-          mt-6 mb-6 ml-4 flex items-center space-x-2">
+          mt-6 mb-6 flex items-center space-x-2">
     <img src="/assets/icon/headphones.svg" alt="headphones" class="w-8 h-8 transition-all">
     </button>
 
@@ -57,9 +57,11 @@
 
     </div>
 
-  
-    <app-art-card [description]="responseData"></app-art-card>
+    
+    
+    
   </div>
+  <app-art-card *ngIf="photoTaken" [description]="responseData"></app-art-card>
   
 
 
