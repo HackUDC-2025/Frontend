@@ -1,9 +1,10 @@
 import { createAction, props } from '@ngrx/store';
+import { ProfileConfig } from 'src/app/profiles/profile.interface';
 
 
 export const setProfileStatus = createAction(
   '[Profile] Set Profile Status',
-  props<{ profileStatus: string }>()
+  props<{ profileStatus: ProfileConfig }>()
 );
 
 

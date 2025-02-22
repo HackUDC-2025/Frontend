@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ProfileService } from '../store/profile/profile.service';
 import { CustomProfileComponent } from '../components/custom-profile/custom-profile.component';
 import { CommonModule } from '@angular/common';
+import { ProfileConfig } from '../profiles/profile.interface';
+import { ProfileFactory } from '../profiles/profile.factory';
 
 
 @Component({
@@ -24,9 +26,9 @@ export class HomePage {
     this.updateLogo();
   }
 
-  goToCamera(profiles: string) {
-    const valor = profiles;
-    this.profileService.setProfile(valor);
+  goToCamera(profileKey: string) {
+    const selectedProfile = ProfileFactory.getProfile(profileKey);
+    this.profileService.setProfile(selectedProfile);
     this.router.navigate(['/open-camera']);
   }
 

@@ -1,5 +1,7 @@
+import { ProfileConfig } from "src/app/profiles/profile.interface";
+
 export interface ProfileState {
-    profileStatus: string | null;
+    profileStatus: ProfileConfig | null;
   }
   
   export const initialProfileState: ProfileState = {
