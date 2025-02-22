@@ -25,3 +25,7 @@
 #container a {
   text-decoration: none;
 }
+.custom-button {
+  @apply w-full text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center space-x-3 text-lg 
+  transition-all duration-300 transform hover:shadow-2xl active:shadow-none active:translate-y-1;
+}

@@ -4,11 +4,17 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { provideHttpClient } from '@angular/common/http';
+
+import { provideStore } from '@ngrx/store';
+import { profileReducer } from './app/store/profile/profile.reducer';
 
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
+    provideHttpClient(),
+    provideStore({ profile: profileReducer }),
   ],
 });

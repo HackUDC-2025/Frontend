@@ -1,42 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="bg-azul-patrimonio text-marmol-beige">
-    <ion-title class="text-xl font-bold text-center">ArtLens</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" 
+  class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8 custom-bg-dark">
 
-<ion-content [fullscreen]="true" class="bg-marmol-beige flex flex-col items-center justify-center">
-  
-  <!-- Header secundario en pantallas grandes -->
-  <ion-header collapse="condense">
-    <ion-toolbar class="bg-azul-patrimonio text-marmol-beige">
-      <ion-title size="large" class="text-oro-clasico text-center">Explora el Arte</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <!-- Contenedor de los botones -->
-  <div class="w-full max-w-md p-6 space-y-4 ">
-    
-    <h2 class="text-center text-white text-2xl font-bold">Selecciona tu edad</h2>
-
-    <!-- Botón 1: Niños -->
-    <button 
-      (click) = "goToCamera()"
-      class="w-full bg-oro-clasico hover:bg-oro-clasico-hover text-white font-bold py-3 px-4 rounded-lg transition text-lg">
-      Niños
-    </button>
-
-    <!-- Botón 2: Adolescentes -->
-    <button class="w-full bg-azul-patrimonio hover:bg-gray-800 text-marmol-beige font-bold py-3 px-4 rounded-lg transition text-lg">
-      Adolescentes
-    </button>
-
-    <!-- Botón 3: Jubilados -->
-    <button class="w-full bg-gris-pizarra hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition text-lg">
-      Jubilados
-    </button>
-
+  <!-- Encabezado -->
+  <div class="w-full flex flex-col items-center space-y-4 mt-8">
+    <img src="assets/icon/favicon.png" alt="Logo" class="w-24 h-24 shadow-lg rounded-full">
+    <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center">Explora el Arte</h1>
+    <p class="text-lg text-museo-gris dark:text-gray-400 max-w-md text-center">
+      Elige tu perfil y descubre información adaptada para ti.
+    </p>
   </div>
-  <app-camera></app-camera>
 
+
+  <div class="w-full max-w-md p-6 space-y-6">
+    
+    <h2 class="text-center text-museo-terracota text-2xl font-bold">Selecciona tu perfil</h2>
+
+
+    <button 
+      (click)="goToCamera('children')"
+      class="custom-button bg-museo-oro border-b-4 border-museo-terracota hover:border-b-2">
+      <span class="text-2xl">🧒</span>
+      <span>Niño</span>
+    </button>
+
+ 
+    <button 
+      (click)="goToCamera('turist')"
+      class="custom-button bg-museo-azul border-b-4 border-museo-gris hover:border-b-2">
+      <span>🌍</span>
+      <span>Turista</span>
+    </button>
+
+
+    <button 
+      (click)="goToCamera('student')"
+      class="custom-button bg-museo-vino border-b-4 border-museo-oliva hover:border-b-2">
+      <span>🎨</span>
+      <span>Estudiante de Bellas Artes</span>
+    </button>
+
+
+    <button 
+      (click)="goToCamera('researcher')"
+      class="custom-button bg-museo-oliva border-b-4 border-museo-gris hover:border-b-2">
+      <span>📚</span>
+      <span>Investigador</span>
+    </button>
+  </div>
 
 </ion-content>

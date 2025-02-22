@@ -4,13 +4,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-      'azul-patrimonio': '#2C3E50',
-      'oro-clasico': '#D4AF37',
-      'oro-clasico-hover': "#b3932d",
-      'marmol-beige': '#EAE0C8',
-      'granate-renacentista': '#8B0000',
-      'gris-pizarra': '#5A5A5A',
-    },
+
+        'museo-negro': '#1C1C1C',       
+        'museo-gris': '#3A3A3A',        
+        'museo-beige': '#E3D5B8', 
+        'museo-blanco': '#FAF8F1',
+
+
+        'museo-oro': '#C9A227',
+        'museo-terracota': '#A35D2B', 
+        'museo-oliva': '#6C7A89', 
+
+
+        'museo-azul': '#4A6FA5', 
+        'museo-vino': '#77212E',
+
+
+        'museo-fondo-claro': '#F6F3EB', 
+        'museo-fondo-oscuro': '#2e2e2e'
+      },
   },
   },
   plugins: [],
