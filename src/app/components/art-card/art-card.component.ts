@@ -1,17 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { TitleParserDto } from 'src/app/dtos/title-parse.dto';
 
 @Component({
   selector: 'app-art-card',
   templateUrl: './art-card.component.html',
   styleUrls: ['./art-card.component.scss'],
-  standalone:true,
+  standalone: true,
+  imports: [CommonModule]
 })
-export class ArtCardComponent  {
+export class ArtCardComponent implements OnChanges {
 
-  @Input() title: string = 'Título de la Obra';
-  @Input() year: string = 'Año';
-  @Input() author: string = 'Autor Desconocido';
-  @Input() description: string = 'Descripción breve de la obra de arte.';
+  @Input() description: TitleParserDto | null = null;
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['description'] && changes['description'].currentValue) {
+      console.log("📌 Datos actualizados en el hijo:", this.description);
+    }
+  }
 }
