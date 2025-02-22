@@ -14,7 +14,7 @@ export class HttpService {
 
 
   searchImage(imageBase64: string): Observable<any> {
-    const url = `${this.baseUrl}/milvus/search`;
+    const url = `${this.baseUrl}/search`;
     const requestBody = { image_base64: imageBase64,
       profile: 'fine arts student '
      };
