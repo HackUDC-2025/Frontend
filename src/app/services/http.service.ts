@@ -7,15 +7,18 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root', 
 })
 export class HttpService {
-  private baseUrl = 'http://193.144.51.204:8000/milvus';
+  private baseUrl = 'http://193.144.51.204:8000';
 
   constructor(private http: HttpClient) {}
 
 
   searchImage(imageBase64: string): Observable<any> {
-    const url = `${this.baseUrl}/search`;
-    const requestBody = { image: imageBase64 };
+    const url = `${this.baseUrl}/milvus/search`;
+    const requestBody = { image_base64: imageBase64,
+      profile: 'fine arts student '
+     };
 
+    
     return this.http.post<any>(url, requestBody).pipe(
       catchError(this.handleError)
     );

@@ -45,7 +45,6 @@ export class OpenCameraPage {
 
   onImageCaptured(imageBase64: string) {
     this.capturedImage = `data:image/jpeg;base64,${imageBase64}`; 
-    console.log('📸 Imagen capturada:', this.capturedImage);
 
     this.sendImageToServer(imageBase64);
   }

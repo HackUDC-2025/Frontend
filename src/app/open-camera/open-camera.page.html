@@ -20,7 +20,9 @@
   </div>
 
   <div class="w-full max-w-md flex flex-col items-center">
-    <app-camera class="w-full"></app-camera>
+    <app-camera class="w-full"
+    (imageCaptured) = "onImageCaptured($event)"
+    ></app-camera>
   </div>
   <div class="w-full max-w-md flex flex-col items-center">
     <app-art-card></app-art-card>

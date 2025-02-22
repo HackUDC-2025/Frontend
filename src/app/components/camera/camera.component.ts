@@ -25,6 +25,7 @@ export class CameraComponent{
       });
 
       this.imageUrl = `data:image/jpeg;base64,${image.base64String}`;
+      console.log('📸 Imagen capturada:', this.imageUrl);
       this.imageCaptured.emit(image.base64String!);
     } catch (error) {
       console.error("Error when taking photo:", error);
