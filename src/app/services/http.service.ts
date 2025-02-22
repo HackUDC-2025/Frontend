@@ -13,10 +13,10 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
 
-  searchImage(imageBase64: string): Observable<any> {
+  searchImage(imageBase64: string, profile: string): Observable<any> {
     const url = `${this.baseUrl}/search`;
     const requestBody = { image_base64: imageBase64,
-      profile: 'fine arts student '
+      profile: profile
      };
 
     

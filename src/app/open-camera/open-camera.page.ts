@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { ProfileService } from '../store/profile/profile.service';
 import { CameraComponent } from '../components/camera/camera.component';
 import { ArtCardComponent } from '../components/art-card/art-card.component';
-import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { IonicModule } from '@ionic/angular';
 import { HttpService } from '../services/http.service';
 import { SearchImageResponseDto } from '../dtos/search-image.dto';
@@ -22,14 +21,12 @@ import { TitleParserDto } from '../dtos/title-parse.dto';
 })
 export class OpenCameraPage {
 
-  profile$: Observable<string | null>;
   responseData: TitleParserDto | null = null;
   recievedData: boolean = false;
   capturedImage: string | null = null;
 
   constructor(private profileService: ProfileService, private httpService: HttpService) {
-    this.profile$ = this.profileService.getProfile();
-    console.log(this.profile$)
+    
   }
 
   async speak() {
@@ -68,28 +65,32 @@ export class OpenCameraPage {
   
   
   sendImageToServer(imageBase64: string) {
-    this.httpService.searchImage(imageBase64).subscribe({
-      next: (data: SearchImageResponseDto) => {
-        console.log("✅ Respuesta del servidor:", JSON.stringify(data, null, 2));
-  
-        this.responseData = { 
-          title: data.description?.titulo || 'Título do',
-          authors: data.description?.autor || 'Autor desconocido',
-          year: data.description?.año || 'Año desconocido',
-          description: data.description?.descripcion || 'Descripción no disponible'
-        };
+    
+    this.profileService.getProfile().subscribe(profileData =>{
 
+      this.httpService.searchImage(imageBase64, profileData).subscribe({
+        next: (data: SearchImageResponseDto) => {
+          console.log("✅ Respuesta del servidor:", JSON.stringify(data, null, 2));
+    
+          this.responseData = { 
+            title: data.description?.titulo || 'Título do',
+            authors: data.description?.autor || 'Autor desconocido',
+            year: data.description?.año || 'Año desconocido',
+            description: data.description?.descripcion || 'Descripción no disponible'
+          };
+  
         this.recievedData = true;
 
-        this.playAudio(this.responseData.description);
-      },
-      error: (err) => {
-        console.error("❌ Error en la petición:", err.message);
-      },
-      complete: () => {
-        console.log("✔ Petición completada.");
-      }
-    });
+          this.playAudio(this.responseData.description);
+        },
+        error: (err) => {
+          console.error("❌ Error en la petición:", err.message);
+        },
+        complete: () => {
+          console.log("✔ Petición completada.");
+        }
+      });
+    })
   }
   
 }

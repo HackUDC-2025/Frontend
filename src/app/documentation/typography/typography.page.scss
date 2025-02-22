@@ -1,0 +1,16 @@
+p {
+    font-size: 18px;
+  }
+  
+  .dark p {
+    color: #f0f0f0;
+  }
+  
+  div {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  div:hover {
+    transform: scale(1.03);
+  }
+  
