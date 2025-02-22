@@ -1,14 +1,25 @@
 <div class="p-6 rounded-xl shadow-lg bg-museo-beige dark:bg-museo-gris w-full max-w-md">
-  
+  <div *ngIf="description; else nodata">
 
-  <h2 class="text-2xl font-bold text-museo-negro dark:text-museo-blanco">{{ title }}</h2>
-  
-  
+  <h2 class="text-2xl font-bold text-museo-negro dark:text-museo-blanco">
+    {{ description?.title || 'Título desconocido' }}
+  </h2>
+
   <p class="text-lg text-museo-gris dark:text-gray-300 mt-1">
-    <span class="font-semibold">{{ year }}</span> - <span class="italic">{{ author }}</span>
+    <span class="font-semibold">
+      {{ description?.year || 'Año desconocido' }}
+    </span> 
+    - 
+    <span class="italic">
+      {{ description?.authors || 'Autor desconocido' }}
+    </span>
   </p>
 
-  
-  <p class="text-museo-gris dark:text-gray-300 mt-3">{{ description }}</p>
-
+  <p class="text-museo-gris dark:text-gray-300 mt-3">
+    {{ description?.description || 'Descripción no disponible' }}
+  </p>
+  </div>
+  <ng-template #nodata>
+    <p class="text-gray-500">⏳ Esperando datos...</p>
+  </ng-template>
 </div>

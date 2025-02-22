@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { SearchImageResponseDto } from '../dtos/search-image.dto';
 
 @Injectable({
   providedIn: 'root', 
@@ -19,9 +20,17 @@ export class HttpService {
      };
 
     
-    return this.http.post<any>(url, requestBody).pipe(
+    return this.http.post<SearchImageResponseDto>(url, requestBody).pipe(
       catchError(this.handleError)
     );
+  }
+
+  generateAudio(description: string): Observable<any> {
+    const url = `${this.baseUrl}/text-to-speech`;
+
+    return this.http.post(url, { text:description }, {
+      responseType: 'blob',
+    });
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {

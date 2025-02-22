@@ -9,6 +9,8 @@ import { ArtCardComponent } from '../components/art-card/art-card.component';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { IonicModule } from '@ionic/angular';
 import { HttpService } from '../services/http.service';
+import { SearchImageResponseDto } from '../dtos/search-image.dto';
+import { TitleParserDto } from '../dtos/title-parse.dto';
 
 
 @Component({
@@ -21,8 +23,7 @@ import { HttpService } from '../services/http.service';
 export class OpenCameraPage {
 
   profile$: Observable<string | null>;
-  text = "";
-  responseData: any;
+  responseData: TitleParserDto | null = null;
   capturedImage: string | null = null;
 
   constructor(private profileService: ProfileService, private httpService: HttpService) {
@@ -31,16 +32,7 @@ export class OpenCameraPage {
   }
 
   async speak() {
-    if (this.text.trim() === '') return;
 
-    await TextToSpeech.speak({
-      text: this.text,
-      lang: 'es-ES',
-      rate: 0.8, 
-      pitch: 1.0,
-      volume: 1.0,
-      category: 'ambient', 
-    });
   }
 
   onImageCaptured(imageBase64: string) {
@@ -48,17 +40,56 @@ export class OpenCameraPage {
 
     this.sendImageToServer(imageBase64);
   }
+
+  playAudio(description: string) {
+    this.httpService.generateAudio(description).subscribe(
+      (blob: Blob) => {
+        const audioUrl = URL.createObjectURL(blob);
+        console.log('🎵 RESPUESTA:', audioUrl); // Verificar que la URL es válida
+  
+        // 🔥 Buscar el elemento <audio> en el DOM
+        const audioPlayer = document.getElementById('audioPlayer') as HTMLAudioElement;
+  
+        if (!audioPlayer) {
+          console.error("❌ No se encontró el elemento <audio> en el DOM.");
+          return;
+        }
+  
+        audioPlayer.src = audioUrl;
+  
+        audioPlayer.play()
+          .then(() => console.log("🎶 Reproducción iniciada."))
+          .catch(err => console.error("❌ Error al reproducir audio:", err));
+      },
+      (error) => {
+        console.error('❌ Error al generar el audio:', error);
+      }
+    );
+  }
+  
   
   sendImageToServer(imageBase64: string) {
-
     this.httpService.searchImage(imageBase64).subscribe({
-      next: (data) => {
-        this.responseData = data;
-        console.log('✅ Respuesta del servidor:', this.responseData);
+      next: (data: SearchImageResponseDto) => {
+        console.log("✅ Respuesta del servidor:", JSON.stringify(data, null, 2));
+  
+        this.responseData = { 
+          title: data.description?.title || 'Título desconocido',
+          authors: data.description?.author || 'Autor desconocido',
+          year: data.description?.year || 'Año desconocido',
+          description: data.description?.description || 'Descripción no disponible'
+        };
+        const description = "Esta es una descripción generada automáticamente.";
+
+        this.playAudio(this.responseData.description);
       },
       error: (err) => {
-        console.error('❌ Error en la petición:', err.message); 
+        console.error("❌ Error en la petición:", err.message);
       },
+      complete: () => {
+        console.log("✔ Petición completada.");
+      }
     });
   }
+  
 }

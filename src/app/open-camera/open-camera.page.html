@@ -4,11 +4,6 @@
   <h1 class="text-2xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-6">
     📸 Escaneo de Obra de Arte
   </h1>
-  <ion-content class="ion-padding">
-    <ion-input [(ngModel)]="text" placeholder="Enter text"></ion-input>
-    <ion-button expand="full" (click)="speak()">Speak</ion-button>
-  </ion-content>
-  
 
   <div class="mx-3 bg-museo-beige dark:bg-museo-gris p-6 rounded-lg shadow-lg">
     <h2 class="text-lg font-semibold text-museo-negro dark:text-museo-blanco mb-4">Instrucciones:</h2>
@@ -25,7 +20,9 @@
     ></app-camera>
   </div>
   <div class="w-full max-w-md flex flex-col items-center">
-    <app-art-card></app-art-card>
+    <app-art-card [description] = "responseData"></app-art-card>
   </div>
+  <audio id="audioPlayer" controls></audio>
+
 
 </ion-content>
