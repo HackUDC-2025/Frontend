@@ -22,7 +22,9 @@
   <div class="w-full max-w-md flex flex-col items-center">
     <app-art-card [description] = "responseData"></app-art-card>
   </div>
-  <audio id="audioPlayer" controls></audio>
+  <div *ngIf="recievedData">
+    <audio id="audioPlayer" controls></audio>  
+  </div>
 
 
 </ion-content>

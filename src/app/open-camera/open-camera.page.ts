@@ -24,6 +24,7 @@ export class OpenCameraPage {
 
   profile$: Observable<string | null>;
   responseData: TitleParserDto | null = null;
+  recievedData: boolean = false;
   capturedImage: string | null = null;
 
   constructor(private profileService: ProfileService, private httpService: HttpService) {
@@ -45,9 +46,7 @@ export class OpenCameraPage {
     this.httpService.generateAudio(description).subscribe(
       (blob: Blob) => {
         const audioUrl = URL.createObjectURL(blob);
-        console.log('🎵 RESPUESTA:', audioUrl); // Verificar que la URL es válida
   
-        // 🔥 Buscar el elemento <audio> en el DOM
         const audioPlayer = document.getElementById('audioPlayer') as HTMLAudioElement;
   
         if (!audioPlayer) {
@@ -74,12 +73,13 @@ export class OpenCameraPage {
         console.log("✅ Respuesta del servidor:", JSON.stringify(data, null, 2));
   
         this.responseData = { 
-          title: data.description?.title || 'Título desconocido',
-          authors: data.description?.author || 'Autor desconocido',
-          year: data.description?.year || 'Año desconocido',
-          description: data.description?.description || 'Descripción no disponible'
+          title: data.description?.titulo || 'Título do',
+          authors: data.description?.autor || 'Autor desconocido',
+          year: data.description?.año || 'Año desconocido',
+          description: data.description?.descripcion || 'Descripción no disponible'
         };
-        const description = "Esta es una descripción generada automáticamente.";
+
+        this.recievedData = true;
 
         this.playAudio(this.responseData.description);
       },
