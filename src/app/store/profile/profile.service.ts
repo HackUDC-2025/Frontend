@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { firstValueFrom, map, Observable } from 'rxjs';
 import { setProfileStatus, clearProfileStatus } from './profile.actions';
 import { selectProfileStatus } from './profile.selectors';
+import { ProfileConfig } from 'src/app/profiles/profile.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +11,16 @@ import { selectProfileStatus } from './profile.selectors';
 export class ProfileService {
   constructor(private store: Store) {}
 
-  getProfile(): Observable<string> {
+  getProfile(): Observable<ProfileConfig> {
     return this.store.select(selectProfileStatus).pipe(
-      map(profile => profile ?? "default") 
+      map(profile => profile as ProfileConfig) 
     );
   }
-  async getProfileString(): Promise<string> {
+  async getProfileString(): Promise<ProfileConfig> {
     return await firstValueFrom(this.getProfile());
   }
 
-  setProfile(status: string): void {
+  setProfile(status: ProfileConfig): void {
     this.store.dispatch(setProfileStatus({ profileStatus: status }));
   }
 

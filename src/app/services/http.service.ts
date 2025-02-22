@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SearchImageResponseDto } from '../dtos/search-image.dto';
+import { ProfileConfig } from '../profiles/profile.interface';
 
 @Injectable({
   providedIn: 'root', 
@@ -13,7 +14,7 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
 
-  searchImage(imageBase64: string, profile: string): Observable<any> {
+  searchImage(imageBase64: string, profile: ProfileConfig): Observable<any> {
     const url = `${this.baseUrl}/search`;
     const requestBody = { image_base64: imageBase64,
       profile: profile
