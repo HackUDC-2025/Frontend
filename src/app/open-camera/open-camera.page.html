@@ -1,9 +1,19 @@
 <ion-content [fullscreen]="true" 
   class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8 h-full">
 
+  <div class="flex justify-end">
+    <button
+      (click)="goToHistory()"
+      class=" text-museo-negro dark:text-museo-blanco p-4 rounded-full 
+          hover:scale-105 hover:shadow-lg active:scale-95 transition-all
+          flex items-center space-x-2 "
+          >
+      <img [src]="historySrc" alt="History" class="w-8 h-8 transition-all">
+    </button>
+  </div>
   <div class="relative w-full flex flex-col items-center">
-    <h1 class="text-3xl font-extrabold text-museo-negro dark:text-museo-blanco text-center mt-10 tracking-wide">
-      📸 Escaneo de Obra de Arte
+    <h1 class="text-3xl font-extrabold text-museo-negro dark:text-museo-blanco text-center mt-2 tracking-wide">
+      Escanea tu obras de arte
     </h1>
     <div class="bar-title"></div>
   </div>

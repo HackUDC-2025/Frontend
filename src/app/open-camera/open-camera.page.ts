@@ -1,6 +1,7 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProfileService } from '../store/profile/profile.service';
 import { CameraComponent } from '../components/camera/camera.component';
 import { ArtCardComponent } from '../components/art-card/art-card.component';
@@ -26,10 +27,12 @@ export class OpenCameraPage {
   capturedImage: string | null = null;
   photoTaken: boolean = false;
   showAudioPlayer: boolean = false;
+  historySrc: string = 'assets/icon/button-history-w.svg';
+
 
   @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
 
-  constructor(private profileService: ProfileService, private httpService: HttpService, private photoService: PhotoService) { 
+  constructor(private profileService: ProfileService, private httpService: HttpService, private photoService: PhotoService, private router: Router) { 
 
   }
 
@@ -52,7 +55,7 @@ export class OpenCameraPage {
       (blob: Blob) => {
         const audioUrl = URL.createObjectURL(blob);
         
-        this.showAudioPlayer = true; // ✅ Asegurar que el reproductor se renderiza
+        this.showAudioPlayer = true;
 
         setTimeout(() => {
           if (!this.audioPlayer || !this.audioPlayer.nativeElement) {
@@ -64,7 +67,7 @@ export class OpenCameraPage {
           this.audioPlayer.nativeElement.play()
             .then(() => console.log("🎶 Reproducción iniciada."))
             .catch(err => console.error("❌ Error al reproducir audio:", err));
-        }, 300); // 🔹 Esperamos 300ms para asegurarnos de que Angular renderiza el <audio>
+        }, 300); 
       },
       (error) => {
         console.error('❌ Error al generar el audio:', error);
@@ -101,4 +104,18 @@ export class OpenCameraPage {
       });
     });
   }
+  goToHistory() {
+    this.router.navigate(['/history']);
+  }
+
+
+  @HostListener('window:DOMContentLoaded') 
+  @HostListener('window:storage') 
+  @HostListener('window:change') 
+  updateLogo() {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    this.historySrc = isDarkMode ? 'assets/icon/button-history-w.svg' : 'assets/icon/button-history.svg';
+  }
+  
+
 }

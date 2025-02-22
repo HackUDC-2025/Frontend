@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ProfileService } from '../store/profile/profile.service';
 import { CustomProfileComponent } from '../components/custom-profile/custom-profile.component';
 import { CommonModule } from '@angular/common';
-import { ProfileConfig } from '../profiles/profile.interface';
 import { ProfileFactory } from '../profiles/profile.factory';
 
 
