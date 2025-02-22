@@ -42,14 +42,17 @@
 
 
 .custom-button {
-    @apply w-full text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center space-x-3 text-lg 
-    transition-all duration-300 transform hover:shadow-2xl active:shadow-none active:translate-y-1;
-  }
-  
-  html, body {
-    @apply font-body;
-  }
-  h1, h2, h3 {
-    @apply font-heading;
-  }
-    
+  @apply w-full text-white font-bold py-4 px-6 rounded-lg shadow-lg flex items-center justify-center space-x-3 text-lg 
+  transition-all duration-300 transform hover:shadow-2xl active:shadow-none active:translate-y-1;
+}
+
+html, body {
+  @apply font-body mt-5;
+}
+h1, h2, h3 {
+  @apply font-heading;
+}
+
+.bar-title{
+  @apply w-64 h-1 bg-museo-oro dark:bg-museo-oro mt-2 rounded-full;
+}
