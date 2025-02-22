@@ -1,28 +1,31 @@
-<ion-content class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-8">
+<ion-content class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex items-center justify-center h-screen">
   
-
-  <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-6">
-    📖 Documentación UI
-  </h1>
-
-
-  <div class="w-full max-w-md space-y-4">
+  <div class="flex flex-col items-center space-y-8 p-5">
     
-    <button routerLink="/documentation/color-palette"
-      class="w-full bg-museo-oro hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300">
-      🎨 Paleta de Colores
-    </button>
+    
+    <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center">
+      📖 Documentación UI
+    </h1>
 
-    <button routerLink="/documentation/typography"
-      class="w-full bg-museo-oro hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300">
-      🔤 Tipografía
-    </button>
+    
+    <div class="flex flex-col items-center space-y-6">
+      
+      <button routerLink="/documentation/color-palette"
+        class="text-2xl font-semibold text-museo-negro dark:text-museo-blanco transition-transform hover:scale-110 hover:text-museo-oro">
+        🎨 Paleta de Colores
+      </button>
 
-    <button routerLink="/documentation/ui-components"
-      class="w-full bg-museo-oro hover:bg-yellow-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-300">
-      📦 Componentes UI
-    </button>
+      <button routerLink="/documentation/typography"
+        class="text-2xl font-semibold text-museo-negro dark:text-museo-blanco transition-transform hover:scale-110 hover:text-museo-oro">
+        🔤 Tipografía
+      </button>
 
+      <button routerLink="/documentation/ui-components"
+        class="text-2xl font-semibold text-museo-negro dark:text-museo-blanco transition-transform hover:scale-110 hover:text-museo-oro">
+        📦 Componentes UI
+      </button>
+
+    </div>
 
   </div>
 
