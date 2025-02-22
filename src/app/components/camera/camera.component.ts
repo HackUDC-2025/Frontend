@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   imports: [IonicModule,CommonModule]
 })
 export class CameraComponent{
+  @Output() imageCaptured = new EventEmitter<string>();
   imageUrl: string | null = null;
 
   constructor() {}
@@ -24,6 +25,7 @@ export class CameraComponent{
       });
 
       this.imageUrl = `data:image/jpeg;base64,${image.base64String}`;
+      this.imageCaptured.emit(image.base64String!);
     } catch (error) {
       console.error("Error when taking photo:", error);
     }

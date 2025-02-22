@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ProfileService } from '../store/profile/profile.service';
 import { CameraComponent } from '../components/camera/camera.component';
 import { ArtCardComponent } from '../components/art-card/art-card.component';
+import { HttpService } from '../services/http.service';
 
 
 @Component({
@@ -18,10 +19,31 @@ import { ArtCardComponent } from '../components/art-card/art-card.component';
 export class OpenCameraPage {
 
   profile$: Observable<string | null>;
+  responseData: any;
+  capturedImage: string | null = null;
 
-  constructor(private profileService: ProfileService) {
+  constructor(private profileService: ProfileService, private httpService: HttpService) {
     this.profile$ = this.profileService.getProfile();
     console.log(this.profile$)
   }
 
+  onImageCaptured(imageBase64: string) {
+    this.capturedImage = `data:image/jpeg;base64,${imageBase64}`; 
+    console.log('📸 Imagen capturada:', this.capturedImage);
+
+    this.sendImageToServer(imageBase64);
+  }
+  
+  sendImageToServer(imageBase64: string) {
+
+    this.httpService.searchImage(imageBase64).subscribe({
+      next: (data) => {
+        this.responseData = data;
+        console.log('✅ Respuesta del servidor:', this.responseData);
+      },
+      error: (err) => {
+        console.error('❌ Error en la petición:', err.message); 
+      },
+    });
+  }
 }
