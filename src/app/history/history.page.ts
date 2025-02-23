@@ -11,7 +11,7 @@ import { BackButtonComponent } from '../components/back-button/back-button.compo
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, BackButtonComponent]
+  imports: [IonContent, CommonModule, FormsModule, BackButtonComponent]
 })
 export class HistoryPage implements OnInit {
   photos: photoDto[] = [];

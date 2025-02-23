@@ -9,7 +9,7 @@ import { BackButtonComponent } from 'src/app/components/back-button/back-button.
   templateUrl: './color-palette.page.html',
   styleUrls: ['./color-palette.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, BackButtonComponent]
+  imports: [IonContent, CommonModule, FormsModule, BackButtonComponent]
 })
 export class ColorPalettePage  {
 

@@ -13,7 +13,7 @@ import { ProfileFactory } from '../profiles/profile.factory';
   standalone: true,
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent,CameraComponent, CustomProfileComponent, CommonModule],
+  imports: [IonContent,CameraComponent, CustomProfileComponent, CommonModule],
 })
 export class HomePage {
   showCustomProfile: boolean= false;
