@@ -13,7 +13,7 @@
   </div>
   <div class="relative w-full flex flex-col items-center">
     <h1 class="text-3xl font-extrabold text-museo-negro dark:text-museo-blanco text-center  tracking-wide">
-      Escanea tus obras de arte
+      Descubre esta obra de arte
     </h1>
     <div class="bar-title"></div>
   </div>
@@ -39,7 +39,7 @@
       <span class="block w-20 h-1 bg-museo-oro dark:bg-museo-terracota mt-2 mx-auto rounded-full"></span>
     </h3>
   
-    <button *ngIf="!showAudioPlayer" (click)="playAudio(responseData?.description || '')" 
+    <button *ngIf="!showAudioPlayer" (click)="toggleAudioPlayer()" 
       class="bg-museo-oro text-museo-negro dark:text-museo-blanco p-4 rounded-full 
             hover:scale-105 hover:shadow-lg active:scale-95 transition-all
             mt-6 mb-6 flex items-center space-x-2">
@@ -48,12 +48,10 @@
 
     <div *ngIf="showAudioPlayer" class="w-full max-w-md flex flex-col items-center my-4 space-y-4">
 
-
-    <audio #audioPlayer controls 
-      id="audioPlayer"
-      class="w-5/6 rounded-lg shadow-lg bg-museo-beige dark:bg-museo-gris">
-    </audio>
-
+      <audio #audioPlayer controls 
+        id="audioPlayer"
+        class="w-5/6 rounded-lg shadow-lg ">
+      </audio>
 
     </div>
 
