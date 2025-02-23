@@ -1,5 +1,5 @@
 .link-button {
     @apply bg-white text-museo-negro dark:text-museo-blanco p-4 rounded-full 
     hover:scale-105 hover:shadow-lg active:scale-95 transition-all
-    flex items-center space-x-2 border-2 border-museo-oro border-solid w-12 h-12;
+    flex items-center space-x-2 border-2 border-museo-oro border-solid w-16 h-16 m-3;
   }

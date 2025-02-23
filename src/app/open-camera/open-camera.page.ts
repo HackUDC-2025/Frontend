@@ -54,7 +54,6 @@ export class OpenCameraPage {
       (blob: Blob) => {
         const audioUrl = URL.createObjectURL(blob);
         
-        this.showAudioPlayer = true;
 
         setTimeout(() => {
           if (!this.audioPlayer || !this.audioPlayer.nativeElement) {
@@ -72,6 +71,13 @@ export class OpenCameraPage {
         console.error('❌ Error al generar el audio:', error);
       }
     );
+  }
+
+  toggleAudioPlayer() {
+  
+    this.showAudioPlayer = true;
+    this.playAudio(this.responseData?.description || '')
+    
   }
 
 
