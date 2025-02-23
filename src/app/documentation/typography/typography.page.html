@@ -1,12 +1,13 @@
 <ion-content class="bg-museo-fondo-claro dark:bg-museo-fondo-oscuro flex flex-col items-center justify-center px-6 space-y-6">
+  <app-back-button></app-back-button>
   
   <h1 class="text-3xl font-bold text-museo-negro dark:text-museo-blanco text-center mt-6">
     🔤 Tipografías Usadas en el Sistema
   </h1>
 
-  <div class="w-full max-w-md space-y-4">
+  <div class=" space-y-4 mx-4">
     
-    <div *ngFor="let font of fonts" class="border-2 border-museo-oro p-4 rounded-lg shadow-md">
+    <div *ngFor="let font of fonts" class="bg-museo-beige dark:bg-museo-gris border-2 border-museo-oro p-4 rounded-lg shadow-md">
       
       <h2 class="text-xl text-museo-negro dark:text-museo-blanco font-bold">
         {{ font.name }}

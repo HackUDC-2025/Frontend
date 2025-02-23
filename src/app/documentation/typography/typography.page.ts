@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { NgClass, CommonModule } from '@angular/common';
+import { BackButtonComponent } from 'src/app/components/back-button/back-button.component';
 
 @Component({
   selector: 'app-typography',
   standalone: true,
-  imports: [IonicModule, CommonModule, NgClass], // ✅ Importar módulos necesarios
+  imports: [IonicModule, CommonModule, NgClass, BackButtonComponent], 
   templateUrl: './typography.page.html',
   styleUrls: ['./typography.page.scss'],
 })

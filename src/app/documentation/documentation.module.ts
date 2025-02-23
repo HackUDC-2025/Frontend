@@ -18,9 +18,9 @@ const routes: Routes = [
       .then((m) => m.TypographyPage),
   },
   {
-    path: 'ui-components',
-    loadComponent: () => import('./ui-components/ui-components.page')
-      .then((m) => m.UiComponentsPage),
+    path: 'about-us',
+    loadComponent: () => import('./about-us/about-us.page')
+      .then((m) => m.AboutUsPage),
   }
 ];
 

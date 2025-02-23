@@ -33,7 +33,7 @@ export class OpenCameraPage {
   @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
 
   constructor(private profileService: ProfileService, private httpService: HttpService, private photoService: PhotoService, private router: Router) { 
-
+    this.updateLogo();
   }
 
 

@@ -16,7 +16,9 @@ import { BackButtonComponent } from '../components/back-button/back-button.compo
 export class HistoryPage implements OnInit {
   photos: photoDto[] = [];
 
-  constructor(private photoService: PhotoService) {}
+  constructor(private photoService: PhotoService) {
+    
+  }
 
   ngOnInit() {
     this.photoService.photos$.subscribe(data => {
